@@ -8,8 +8,7 @@
     <script src="script.js"></script>
 </head>
 <body>
-<h1 class="title">Living Shapes</h1>
-<button class="button"><a href="Projects.php">Bekijk Meer!</a></button>
+
 </body>
 </html>
 
