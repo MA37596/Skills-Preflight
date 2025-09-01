@@ -1,51 +1,136 @@
-# Deze ReadMe heeft twee onderdelen, bovenaan de Docker setup en onderaan een stuk over dit project.
+# Living Shapes Architecture Website
 
-<hr>
+Een moderne website voor Living Shapes Architecture met drag & drop functionaliteit en hover effecten.
 
-# Docker setup
-Deze uitleg gaat over een Docker setup met een container voor NGINX, PHP en MariaDB. Deze setup is zo in te stellen dat je een virtuele ontwikkel omgeving hebt die je kunt gebruiken voor alle ontwikkel opdrachten.
-Zo kun je als het nodig is een andere versie van PHP installeren of een andere database engine gebruiken.
+## Functionaliteiten
 
-<hr>
+- **Gradient achtergrond** - Mooie paars-blauwe gradient die het witte logo perfect laat uitkomen
+- **Hover effecten** - Bij hover over project afbeeldingen wordt de tweede afbeelding getoond met smooth transitie
+- **Drag & Drop** - Projecten kunnen van positie worden gewisseld door ze te slepen
+- **Responsive design** - Geoptimaliseerd voor 960x500 pixels resolutie
+- **Gecentreerde layout** - Alle content is zowel horizontaal als verticaal gecentreerd
 
-## Onderdelen
-### Public
-In deze structuur zit vind je een public folder, hier komen straks alle php documenten te staan die publiekelijk zijn. Je library of config bestanden zul je in een folder buiten de public moeten plaatsen.
-### YML
-Het docker-compose.yml is het moeder bestand waar in staat wat er gebeurd en welke acties eruitgevoerd moeten worden.
-### Docker folder
-In deze folder kom je alle bestanden tegen die voor een bepaalde 
+## Technische Vereisten
 
-<hr>
+- Docker en Docker Compose
+- PHP 7.4+
+- MariaDB/MySQL
+- Nginx
 
-## Setup
-### 1 Download
-Download deze folder en plaats hem ergens op je computer. Zorg ervoor dat hij is uitgepakt én niet in een httpdocs folder staat. Maar op een duidelijke plek waar je vanaf nu aan je project gaat werken.
+## Installatie en Opstarten
 
+### 1. Clone het project
+```bash
+git clone [repository-url]
+cd Skills-Preflight
+```
 
-### 2 Dependecies
-Zorg ervoor dat je Docker desktop hebt draaien.
-Download eventueel hier: [https://www.docker.com](url)
+### 2. Start de Docker containers
+```bash
+docker-compose up -d
+```
 
-### 3 Port available
-Het kan zijn dat er een andere Docker omgeving aan staat, zet die dan eerst uit. Je hebt als het goed is nu geen XAMP / MAMP / LAMP / WAMP / of docker container draaien.
+### 3. Wacht tot alle services zijn opgestart
+```bash
+docker-compose ps
+```
 
-### 4 Start de docker container
-Ga nu via de commandline ( CMD of Terminal ) naar de folder waar je docker-compose.yml file staat en start docker met het volgende commando: <br>
-```docker-compose up```
-<br>
-Wil je deze container in de achtergrond draaien voer dan het volgende commando uit: <br>
-```docker-compose up -d```
+### 4. Open de website
+- **Website**: http://localhost
+- **phpMyAdmin**: http://localhost:1088
 
-### 5 Bestanden in public
-In de public folder kom je een index.php file tegen, die kun je als voorbeeld gebruiken om te kijken of alles werkt.
+## Project Structuur
 
-### 6 Test je website
-Ga nu naar de volgende url en geniet van je virtuele omgeving met PHP:
-[http://localhost:88](url)
+```
+Skills-Preflight/
+├── public/                 # Website bestanden
+│   ├── index.php          # Homepage
+│   ├── projects.php       # Projecten pagina
+│   ├── style.css          # Styling
+│   └── script.js          # JavaScript functionaliteit
+├── docker/                # Docker configuratie
+│   └── nginx.conf         # Nginx configuratie
+├── docker-compose.yml      # Docker services
+├── .env                   # Environment variables
+└── README.md              # Dit bestand
+```
 
-### 7 Database beheer
-In deze docker setup zit ook een phpmyadmin container. Daarmee kun je je database beheren, zie:
-[http://localhost:1088](url)
+## Projecten
 
-Veel plezier met ontwikkelen van je applicatie!
+De website toont 4 architectuurprojecten:
+
+1. **The Hive** - Madrid, Spain
+2. **B'Fly** - Tijuana, Mexico  
+3. **Bonsai** - Kyoto, Japan
+4. **L'Camou** - Vancouver, Canada
+
+Elk project heeft twee afbeeldingen:
+- **Hoofdafbeelding**: Buitenkant van het gebouw
+- **Tweede afbeelding**: Binnenkant van het gebouw
+
+## Gebruik
+
+### Navigatie
+- Klik op "Bekijk Meer!" op de homepage om naar de projecten te gaan
+- Gebruik de browser's back button om terug te gaan
+
+### Drag & Drop
+- Klik en sleep project boxes om ze van positie te wisselen
+- Visuele feedback toont waar het project wordt geplaatst
+
+### Hover Effecten
+- Hover over project afbeeldingen om de binnenkant te zien
+- Smooth transitie tussen buiten- en binnenkant
+
+## Technische Details
+
+### CSS Features
+- CSS Grid voor 2x2 layout
+- Flexbox voor centrering
+- CSS Transitions voor smooth animaties
+- Backdrop-filter voor glassmorphism effect
+
+### JavaScript Features
+- HTML5 Drag & Drop API
+- Event listeners voor drag events
+- DOM manipulation voor element swapping
+- Visual feedback tijdens drag operaties
+
+### Responsive Design
+- Vaste afmetingen voor 960x500 resolutie
+- Overflow hidden om scrolling te voorkomen
+- Gecentreerde content
+
+## Troubleshooting
+
+### Database connectie problemen
+```bash
+# Herstart MariaDB container
+docker-compose restart mariadb
+
+# Check logs
+docker-compose logs mariadb
+```
+
+### Website niet bereikbaar
+```bash
+# Check of alle containers draaien
+docker-compose ps
+
+# Herstart alle services
+docker-compose down && docker-compose up -d
+```
+
+### Afbeeldingen niet zichtbaar
+- Controleer of alle .jpg bestanden in de root directory staan
+- Controleer bestandsnamen en paden in projects.php
+
+## Contact
+
+Living Shapes Architecture
+- Email: info@livingshapes.com
+- Phone: +31 20 123 4567
+
+## Licentie
+
+Dit project is ontwikkeld voor Living Shapes Architecture.

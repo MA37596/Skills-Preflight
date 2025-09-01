@@ -8,8 +8,14 @@
     <script src="script.js"></script>
 </head>
 <body>
-<h1 class="title">Living Shapes</h1>
-<button class="button"><a href="Projects.php">Bekijk Meer!</a></button>
+    <div class="logo-container">
+        <img src="logo-livingshapes.png" class="logo">
+    </div>
+    
+    <div style="text-align: center;">
+        <h1 class="title">Living Shapes</h1>
+        <a href="projects.php" class="button">Bekijk Meer!</a>
+    </div>
 </body>
 </html>
 
