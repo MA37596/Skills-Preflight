@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="logo-container">
-        <img src="logo-livingshapes.png" class="logo">
     </div>
     
     <div style="text-align: center;">

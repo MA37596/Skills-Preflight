@@ -1,11 +1,13 @@
-// Drag & Drop functionality for project boxes
+
+// DOMContentLoaded word gebruikt om er voor te zorgen dat de javascript pas bruikbaar is als de gehele html is geladen.
 document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('projects-container');
     const boxes = document.querySelectorAll('.box');
     
+    // hiermee word onthouden wat er momenteel word gedragd  
     let draggedElement = null;
     
-    // Add event listeners to each box
+    // hier krijgt elke event een listener, wanneer hij word gedragd wanneer hij word gedropt. Etc
     boxes.forEach(box => {
         box.addEventListener('dragstart', handleDragStart);
         box.addEventListener('dragend', handleDragEnd);
@@ -15,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         box.addEventListener('dragleave', handleDragLeave);
     });
     
+    // zoals met de let draggedelement = null; word er hier opgeslagen wanneer je dragt
     function handleDragStart(e) {
         draggedElement = this;
         this.classList.add('dragging');
@@ -22,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.dataTransfer.setData('text/html', this.outerHTML);
     }
     
+    // wanneer het draggen stopt word deze class verwijderd
     function handleDragEnd(e) {
         this.classList.remove('dragging');
         draggedElement = null;
@@ -46,12 +50,10 @@ document.addEventListener('DOMContentLoaded', function() {
         this.classList.remove('drag-over');
         
         if (draggedElement !== this) {
-            // Get the positions
             const allBoxes = [...boxes];
             const draggedIndex = allBoxes.indexOf(draggedElement);
             const droppedIndex = allBoxes.indexOf(this);
             
-            // Swap the elements
             if (draggedIndex < droppedIndex) {
                 this.parentNode.insertBefore(draggedElement, this.nextSibling);
             } else {
@@ -60,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Add visual feedback for drag over
     const style = document.createElement('style');
     style.textContent = `
         .drag-over {
